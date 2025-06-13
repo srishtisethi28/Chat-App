@@ -1,9 +1,9 @@
-import User from "../models/user";
+import User from "../models/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import cloudinary from "../lib/cloudinary"; 
+import cloudinary from "../lib/cloudinary.js"; 
 import dotenv from "dotenv";
-import { generateToken } from "../lib/utils";
+import { generateToken } from "../lib/utils.js";
 dotenv.config();
 
 export const signup = async (req, res) => {
