@@ -24,6 +24,7 @@ export const getUsersForSidebar = async (req, res) => {
     });
     await Promise.all(promises);
     res.json({
+      success:true,
       users: filterdUsers,
       unseenMessages,
     });

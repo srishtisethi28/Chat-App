@@ -28,10 +28,9 @@ export const signup = async (req, res) => {
     const savedUser = await newUser.save();
     const token=generateToken(savedUser._id);
     res.status(201).json({
+      success: true,
       message: "User created successfully and logged in",
-      userData: {
-        savedUser
-      },
+      userData:savedUser,
       token,
     });
 
@@ -57,10 +56,9 @@ export const login=async(req,res)=>{
     }
     const token = generateToken(user._id);
     res.status(200).json({
+      success: true,
       message: "Login successful",
-      userData: {
-        user
-      },
+      userData:user,
       token,
     });
   } catch (error) {
@@ -86,15 +84,16 @@ export const updateProfile = async (req, res) => {
         {  profilePic: upload.secure_url, bio, fullName },
         { new: true }
       );
-      res.status(200).json({
-        message: "Profile updated successfully",
-        user: {
-          updatedUser
-        },
-      });
     }
+
+    res.status(200).json({
+      success: true,
+      message: "Profile updated successfully",
+      user: updatedUser,
+    });
+
   } catch (error) {
     console.error("Update profile error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 }
