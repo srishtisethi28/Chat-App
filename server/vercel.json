@@ -5,7 +5,7 @@
 
             "src":"serveer.js",
             "use":"@vercel/node",
-            "congig":{
+            "config":{
                 "includeFiles":[
                     "dist/**"
                 ]
